@@ -12,35 +12,41 @@ const Home = () => {
 				<div className="div">
 					<p className="cardTitle text-center">Todos</p>	
 				</div>
-				<div className="container-flex border ">
+				<div className="container-flex ">
 					<div className="row noteBook bg-white">
 						<div className="col-12 d-felx flex-column inputStyle">
-							<div className="div border col-12 ">
-								{ToDo()}
-								{CancellButton()}
+							<div className="div border row align-items-center ">
+								<div className="col-10">
+									{ToDo()}
+								</div>
+								<div className="col-2 text-right">
+								<div style={{ textAlign: 'right' }}>
+										{CancellButton()}
+									</div>
+								</div>
 							</div>
-							<div className="div border w-100 ">
-								{ToDo()}
-								{CancellButton()}
+							<div className="div border row align-items-center ">
+								<div className="col-6">
+									{ToDo()}
+								</div>
+								<div className="col-6 text-right">
+								<div style={{ textAlign: 'right' }}>
+										{CancellButton()}
+									</div>
+								</div>
 							</div>
-							<div className="div border w-100 ">
-								{ToDo()}
-								{CancellButton()}
+							<div className="div border row align-items-center ">
+								<div className="col-6">
+									{ToDo()}
+								</div>
+								<div className="col-6 text-right">
+								<div style={{ textAlign: 'right' }}>
+										{CancellButton()}
+									</div>
+								</div>
 							</div>
-							<div className="div">
-								{ToDo()}
-								{CancellButton()}
-							</div>
-							<div className="div">
-								{ToDo()}
-								{CancellButton()}
-							</div>
-							<div className="div">
-								{ToDo()}
-							</div>
-							<div className="div">
-								{ToDo()}
-							</div>
+							
+							
 						</div>
 					</div>
 				</div>

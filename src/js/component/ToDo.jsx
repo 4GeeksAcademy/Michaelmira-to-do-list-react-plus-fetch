@@ -11,10 +11,10 @@ function ToDo(props) {
     }
     
     return (
-        <div className="border w-100">
+        <div >
             <form action="/submit" method="post">
                 <label for="name"></label>
-                <input type="text" placeholder="What needs to be done? ? " required style={inputStyle}  ></input>
+                <input type="text" placeholder="What needs to be done? " required style={inputStyle}  ></input>
             </form>
         </div>
     );

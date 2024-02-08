@@ -8,7 +8,9 @@ function CancellButton(props) {
     
     return (
         <div>
-            <button type="button" class="btn btn-dark">Dark</button>
+            <button type="button" class="btn btn-light text-body-tertiary">
+                 X
+            </button>
         </div>
     );
 };
