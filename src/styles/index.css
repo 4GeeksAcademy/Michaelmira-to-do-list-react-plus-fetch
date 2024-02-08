@@ -1,0 +1,25 @@
+.container-flex-big {
+    padding-top: 100px;
+}
+
+.container {
+    width: 500px;
+    height: 550px;
+    margin-top: 0px;
+}
+
+.cardTitle {
+    color: lightgray;
+    font-size: 70px;
+}
+
+.noteBook {
+    height: 300px;
+    width: 400px;
+    margin-left: 40px;
+}
+
+.container-flex {
+    border-radius: 5px;
+    border: black;
+}

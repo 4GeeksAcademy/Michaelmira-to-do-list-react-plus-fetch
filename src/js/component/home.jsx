@@ -1,16 +1,19 @@
 import React from "react";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+import ToDo from "./ToDo";
 
 //create your first component
 const Home = () => {
 	return (
-		<div className="template text-center bg-black vh-100 ">
-			<div className="container bg-light mt-5 ">
-				<div className="card-body">
-					<h5 className="card-title">Card Title</h5>
-					<p className="card-text">Your content goes here. It can be as long or as short as you need.</p>
+		<div className="container-flex-big bg-black vh-100 ">
+			<div className="container bg-light" >
+				<div className="div">
+					<p className="cardTitle text-center">Todos</p>	
+				</div>
+				<div className="container-flex border ">
+					<div className="row noteBook bg-white">
+						{ToDo()}
+					</div>
 				</div>
 			</div>
 		</div>
