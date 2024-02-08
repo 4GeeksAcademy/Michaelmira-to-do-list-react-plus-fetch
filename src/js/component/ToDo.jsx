@@ -14,7 +14,7 @@ function ToDo(props) {
         <div >
             <form action="/submit" method="post">
                 <label for="name"></label>
-                <input type="text" placeholder="What needs to be done? " required style={inputStyle}  ></input>
+                <input className='text-body-tertiary' type="text" placeholder="What needs to be done? " required style={inputStyle}  ></input>
             </form>
         </div>
     );

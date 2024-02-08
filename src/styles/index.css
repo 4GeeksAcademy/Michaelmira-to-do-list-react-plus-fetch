@@ -6,6 +6,7 @@
     width: 500px;
     height: 550px;
     margin-top: 0px;
+    background-color: #F4F4F6;
 }
 
 .cardTitle {
@@ -27,6 +28,6 @@
 
 .inputStyle {
     height: 25px;
-    length: 100px;
+   
     margin: 0;
 }

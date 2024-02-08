@@ -1,21 +1,21 @@
-// CancellButton.jsx
+Footer.jsx
 
 import PropTypes from 'prop-types';
 
 import React from "react";
 
-function CancellButton(props) {
+function Footer(props) {
     
     return (
         <div>
-            <button type="button " className="btn btn-sm btn-light text-body-tertiary">
-                 X
-            </button>
+            <div class="card-footer text-left text-body-secondary">
+            2 days ago
+            </div>
         </div>
     );
 };
 
-CancellButton.PropTypes = {
+Footer.PropTypes = {
     hundredThousandsDigit: PropTypes.string,
     tenThousandsDigit: PropTypes.number,
     thousandsDigit: PropTypes.number,
@@ -25,4 +25,4 @@ CancellButton.PropTypes = {
 
 }
 
-export default CancellButton
+export default Footer
