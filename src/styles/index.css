@@ -15,7 +15,6 @@
 }
 
 .noteBook {
-    height: 300px;
     width: 400px;
     margin-left: 40px;
     border-bottom: 1px solid lightgray;
@@ -27,8 +26,8 @@
 }
 
 .inputStyle {
-    height: 25px;
-   
+    height: 50px;
+    
     margin: 0;
 }
 

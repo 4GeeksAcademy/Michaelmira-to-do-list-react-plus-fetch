@@ -15,9 +15,21 @@ const Home = () => {
 					<p className="cardTitle text-center">Todos</p>	
 				</div>
 				<div className="container-flex ">
-					<div className="row noteBook bg-white">
-						<div className="col-12 d-felx flex-column inputStyle">
-							<div className="div border row align-items-center pt-2 pb-2 fs-4 ">
+					<div className="row noteBook bg-white flex-column">
+						<div className="col-12 border d-felx flex-column inputStyle">
+							<div className="div row align-items-center fs-4 ">
+								<div className="col-10">
+									{ToDo()}
+								</div>
+								<div className="col-2 text-right">
+								<div style={{ textAlign: 'right' }}>
+										{CancellButton()}
+									</div>
+								</div>
+							</div>
+						</div>
+						<div className="col-12 border d-felx flex-column inputStyle">
+							<div className="div row align-items-center fs-4 ">
 								<div className="col-10">
 									{ToDo()}
 								</div>
