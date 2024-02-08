@@ -17,9 +17,16 @@
     height: 300px;
     width: 400px;
     margin-left: 40px;
+    border-bottom: 1px solid lightgray;
 }
 
 .container-flex {
     border-radius: 5px;
     border: black;
+}
+
+.inputStyle {
+    height: 25px;
+    length: 100px;
+    margin: 0;
 }

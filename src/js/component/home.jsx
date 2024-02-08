@@ -12,7 +12,15 @@ const Home = () => {
 				</div>
 				<div className="container-flex border ">
 					<div className="row noteBook bg-white">
-						{ToDo()}
+						<div className="col-md-6 d-felx flex-column inputStyle">
+							{ToDo()}
+							{ToDo()}
+							{ToDo()}
+							{ToDo()}
+							{ToDo()}
+							{ToDo()}
+							{ToDo()}
+						</div>
 					</div>
 				</div>
 			</div>
