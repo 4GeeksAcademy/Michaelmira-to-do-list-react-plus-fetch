@@ -9,7 +9,7 @@ function Footer(props) {
     return (
         <div>
             <div class="card-footer text-left text-body-secondary">
-            2 days ago
+            X items left
             </div>
         </div>
     );

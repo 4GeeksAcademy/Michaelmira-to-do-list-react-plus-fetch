@@ -27,13 +27,14 @@ const Home = () => {
 									</div>
 								</div>
 							</div>
-							<div className="container-flex bg-white">
-							{Footer()}
-							</div>
+						</div>
+						<div className="col-12 footerStyle bg-white border d-flex align-items-center">
+						{Footer()}
+						</div>
 	
 
 
-						</div>
+						
 					</div>
 				</div>
 			</div>
