@@ -1,3 +1,5 @@
+// home.jsx
+
 import React from "react";
 
 import ToDo from "./ToDo";
@@ -19,11 +21,11 @@ const Home = () => {
 						<div className="col-12 border d-felx flex-column inputStyle">
 							<div className="div row align-items-center fs-4 ">
 								<div className="col-10">
-									{ToDo()}
+									<ToDo />
 								</div>
 								<div className="col-2 text-right">
 								<div style={{ textAlign: 'right' }}>
-										{CancellButton()}
+										<CancellButton />
 									</div>
 								</div>
 							</div>
@@ -31,17 +33,17 @@ const Home = () => {
 						<div className="col-12 border d-felx flex-column inputStyle">
 							<div className="div row align-items-center fs-4 ">
 								<div className="col-10">
-									{ToDo()}
+									<ToDo />
 								</div>
 								<div className="col-2 text-right">
 								<div style={{ textAlign: 'right' }}>
-										{CancellButton()}
+										<CancellButton />
 									</div>
 								</div>
 							</div>
 						</div>
 						<div className="col-12 footerStyle bg-white border d-flex align-items-center">
-						{Footer()}
+						<Footer />
 						</div>
 	
 

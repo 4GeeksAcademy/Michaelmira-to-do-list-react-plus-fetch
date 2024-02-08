@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 
 import React, { useState } from 'react';
 
+import CancellButton from './CancellButton';
+
+
 function ToDo(props) {
     const [inputValue, setInputValue] = useState("");
 
@@ -12,9 +15,15 @@ function ToDo(props) {
     };
 
     const handleFormSubmit = (event) => {
-        event.preventDefault();
-        console.log("Submitted Value", inputValue);
+        if (event.key === "Enter") {
+            event.preventDefault();
+            console.log("Submitted Value", inputValue);
+        }
     };
+
+    const handleCancel = () => {
+        setInputValue("");
+    }
 
     const inputStyle = {
         border: 'none',  // Remove the border
@@ -23,29 +32,23 @@ function ToDo(props) {
     
     return (
         <div >
-            <form onSubmit= {handleFormSubmit}>
+            <form onKeyDown={handleFormSubmit}>
                 <label for="name"></label>
                 <input 
+                id="toDoInput"
                 className='text-body-tertiary' 
                 type="text" 
                 placeholder="What needs to be done? " 
                 required 
                 style={inputStyle}
                 value={inputValue}
-                onChange={handleInputChange}></input>
+                onChange={handleInputChange}>
+                </input>
+                <CancellButton onCancel={handleCancel} />
             </form>
         </div>
     );
 };
 
-ToDo.PropTypes = {
-    inputStick: PropTypes.string,
-    tenThousandsDigit: PropTypes.number,
-    thousandsDigit: PropTypes.number,
-    hundredsDigit: PropTypes.number,
-    tensDigit: PropTypes.number,
-    onesDigitDigit: PropTypes.number,
-
-}
 
 export default ToDo

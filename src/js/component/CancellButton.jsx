@@ -8,21 +8,20 @@ function CancellButton(props) {
     
     return (
         <div>
-            <button type="button " className="btn btn-sm btn-light text-body-tertiary">
+            <button type="button " 
+                className="btn btn-sm btn-light text-body-tertiary"
+                id="eraseButton"
+                onClick= {props.onCancel} 
+            >
                  X
             </button>
         </div>
     );
 };
 
-CancellButton.PropTypes = {
-    hundredThousandsDigit: PropTypes.string,
+CancellButton.propTypes = {
+    onCancel: PropTypes.func.isRequired,
     tenThousandsDigit: PropTypes.number,
-    thousandsDigit: PropTypes.number,
-    hundredsDigit: PropTypes.number,
-    tensDigit: PropTypes.number,
-    onesDigitDigit: PropTypes.number,
-
 }
 
 export default CancellButton
