@@ -2,6 +2,8 @@ import React from "react";
 
 import ToDo from "./ToDo";
 
+import CancellButton from "./CancellButton";
+
 //create your first component
 const Home = () => {
 	return (
@@ -12,21 +14,26 @@ const Home = () => {
 				</div>
 				<div className="container-flex border ">
 					<div className="row noteBook bg-white">
-						<div className="col-md-6 d-felx flex-column inputStyle">
-							<div className="div">
+						<div className="col-12 d-felx flex-column inputStyle">
+							<div className="div border col-12 ">
 								{ToDo()}
+								{CancellButton()}
+							</div>
+							<div className="div border w-100 ">
+								{ToDo()}
+								{CancellButton()}
+							</div>
+							<div className="div border w-100 ">
+								{ToDo()}
+								{CancellButton()}
 							</div>
 							<div className="div">
 								{ToDo()}
+								{CancellButton()}
 							</div>
 							<div className="div">
 								{ToDo()}
-							</div>
-							<div className="div">
-								{ToDo()}
-							</div>
-							<div className="div">
-								{ToDo()}
+								{CancellButton()}
 							</div>
 							<div className="div">
 								{ToDo()}
