@@ -4,9 +4,8 @@ import React from "react";
 
 import ToDo from "./ToDo";
 
-import CancellButton from "./CancellButton";
-
 import Footer from "./Footer";
+import ToDoPlusCancel from "./ToDo";
 
 //create your first component
 const Home = () => {
@@ -19,36 +18,26 @@ const Home = () => {
 				<div className="container-flex ">
 					<div className="row noteBook bg-white flex-column">
 						<div className="col-12 border d-felx flex-column inputStyle">
-							<div className="div row align-items-center fs-4 ">
-								<div className="col-10">
-									<ToDo />
-								</div>
-								<div className="col-2 text-right">
-								<div style={{ textAlign: 'right' }}>
-										<CancellButton />
-									</div>
-								</div>
-							</div>
+							<ToDoPlusCancel />
 						</div>
 						<div className="col-12 border d-felx flex-column inputStyle">
-							<div className="div row align-items-center fs-4 ">
-								<div className="col-10">
-									<ToDo />
-								</div>
-								<div className="col-2 text-right">
-								<div style={{ textAlign: 'right' }}>
-										<CancellButton />
-									</div>
-								</div>
-							</div>
+							<ToDoPlusCancel />
+						</div>
+						<div className="col-12 border d-felx flex-column inputStyle">
+							<ToDoPlusCancel />
+						</div>
+						<div className="col-12 border d-felx flex-column inputStyle">
+							<ToDoPlusCancel />
+						</div>
+						<div className="col-12 border d-felx flex-column inputStyle">
+							<ToDoPlusCancel />
+						</div>
+						<div className="col-12 border d-felx flex-column inputStyle">
+							<ToDoPlusCancel />
 						</div>
 						<div className="col-12 footerStyle bg-white border d-flex align-items-center">
-						<Footer />
+							<Footer />
 						</div>
-	
-
-
-						
 					</div>
 				</div>
 			</div>
