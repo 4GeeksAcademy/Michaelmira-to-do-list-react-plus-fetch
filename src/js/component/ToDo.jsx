@@ -7,22 +7,15 @@ import React, { useState } from 'react';
 function ToDoPlusCancel() {
     const [toDos, setToDos] = useState([]);
     const [inputValue, setInputValue] = useState("");
+    const [isInputDisabled, setIsInputDisabled] = useState(false);
 
     const handleInputChange = (event) => {
         setInputValue(event.target.value);
     };
 
-    const handleFormSubmit = (event) => {
-        if (event.key === "Enter") {
-            setToDos((prevToDos) => [...prevToDos, inputValue]);
-            console.log("Submitted Value", inputValue);
-            // event.preventDefault();
-            setInputValue("");  //Clear input after submission
-        }
-    };
-
     const handleCancel = () => {
         setInputValue("");  // this clears input
+        setIsInputDisabled(false);  // Enable input on cancel
     };
 
     const inputStyle = {
@@ -40,7 +33,7 @@ function ToDoPlusCancel() {
     return (
         <div className="div row align-items-center fs-4 ">
             <div className="col-10">
-                <form onKeyDown={handleFormSubmit}>
+                <form onSubmit={(e) => e.preventDefault()}>
                     <label htmlFor="toDoInput"></label>
                     <input 
                         id="toDoInput"
@@ -50,7 +43,9 @@ function ToDoPlusCancel() {
                         required 
                         style={inputStyle}
                         value={inputValue}
-                        onChange={handleInputChange}>
+                        onChange={handleInputChange}
+                        disabled={isInputDisabled} //Disable input if isInputDisabled is true
+                    >
                     </input>
                  </form>
             </div>     
