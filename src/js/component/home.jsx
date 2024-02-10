@@ -20,24 +20,9 @@ const Home = () => {
 						<div className="col-12 border d-felx flex-column inputStyle">
 							<ToDoPlusCancel />
 						</div>
-						<div className="col-12 border d-felx flex-column inputStyle">
-							<ToDoPlusCancel />
-						</div>
-						<div className="col-12 border d-felx flex-column inputStyle">
-							<ToDoPlusCancel />
-						</div>
-						<div className="col-12 border d-felx flex-column inputStyle">
-							<ToDoPlusCancel />
-						</div>
-						<div className="col-12 border d-felx flex-column inputStyle">
-							<ToDoPlusCancel />
-						</div>
-						<div className="col-12 border d-felx flex-column inputStyle">
-							<ToDoPlusCancel />
-						</div>
-						<div className="col-12 footerStyle bg-white border d-flex align-items-center">
+						{/* <div className="col-12 footerStyle bg-white border d-flex align-items-center">
 							<Footer />
-						</div>
+						</div> */}
 					</div>
 				</div>
 			</div>
