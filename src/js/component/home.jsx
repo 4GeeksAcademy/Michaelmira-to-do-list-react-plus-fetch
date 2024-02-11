@@ -2,8 +2,6 @@
 
 import React from "react";
 
-import ToDo from "./ToDo";
-
 import ToDoPlusCancel from "./ToDo";
 
 //create your first component
