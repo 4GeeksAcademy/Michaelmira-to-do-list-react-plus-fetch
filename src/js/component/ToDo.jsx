@@ -93,9 +93,11 @@ function ToDoPlusCancel() {
                                     }
                                 />
                             ))}
-                            <small className='ps-5'>{todos.filter((item) => item.is_done).length} todos left to do</small>
+                            {/* <small className='ps-5'>{todos.filter((item) => item.is_done).length} todos left to do</small> */}
+                            <div className="div">
+                                <small className='ps-5'>{todos.length} Item left</small>
+                            </div>  
                         </form>
-
 
             </div>
         </>
