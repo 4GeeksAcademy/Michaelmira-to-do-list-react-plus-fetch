@@ -15,9 +15,9 @@ const Home = () => {
 				<div className="div">
 					<p className="cardTitle text-center">Todos</p>	
 				</div>
-				<div className="container-flex ">
-					<div className="row noteBook bg-white flex-column">
-						<div className="col-12 border d-felx flex-column">
+				<div className="container-flex mx-auto ">
+					<div className="container-flex mx-auto noteBook bg-white flex-column">
+						<div className="container-flex mx-auto border d-felx flex-column">
 							<ToDoPlusCancel />
 						</div>
 						{/* <div className="col-12 footerStyle bg-white border d-flex align-items-center">

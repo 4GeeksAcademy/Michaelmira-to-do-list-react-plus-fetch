@@ -6,8 +6,8 @@ import React, { useState, useEffect } from 'react';
 function TodoItem({label, is_done, delete_todo, toggle_todo}){
 	return (
         <>
-            <div className="todo-item bg-white border d-flex justify-content-between">
-                <input type="checkbox"checked={is_done} onChange={toggle_todo} />
+            <div className="todo-item ps-5 bg-white border d-flex justify-content-between">
+                {/* <input type="checkbox"checked={is_done} onChange={toggle_todo} /> */}
                 <span> {label} </span>
                 <button type="button" className="btn" onClick= {delete_todo}>
                     X
@@ -41,7 +41,9 @@ function ToDoPlusCancel() {
     
     return (
         <>
-            <div className="div row align-items-center fs-4">
+            <div className="div align-items-center fs-4 mx-auto">
+        
+                   
                     
                         <form 
                         onSubmit={(ev) => {
@@ -60,6 +62,7 @@ function ToDoPlusCancel() {
                         >
                             <label htmlFor="toDoInput"></label>
                             <input 
+                                className='ms-5'
                                 id="toDoInput"
                                 type="text" 
                                 placeholder="What needs to be done? " 
@@ -90,10 +93,10 @@ function ToDoPlusCancel() {
                                     }
                                 />
                             ))}
-                            <small>{todos.filter((item) => item.is_done).length} todos left to do</small>
+                            <small className='ps-5'>{todos.filter((item) => item.is_done).length} todos left to do</small>
                         </form>
-                                       
-                    
+
+
             </div>
         </>
     );
