@@ -4,7 +4,6 @@ import React from "react";
 
 import ToDo from "./ToDo";
 
-import Footer from "./Footer";
 import ToDoPlusCancel from "./ToDo";
 
 //create your first component
