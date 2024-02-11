@@ -6,11 +6,11 @@ import React, { useState, useEffect } from 'react';
 function TodoItem({label, is_done, delete_todo, toggle_todo}){
 	return (
         <>
-            <div className="todo-item bg-white border d-flex align-items-center justify-content-between w-100">
+            <div className="todo-item bg-white border d-flex justify-content-between">
                 <input type="checkbox"checked={is_done} onChange={toggle_todo} />
-                <span className="todo-text"> {label} </span>
-                <button type="button" className="btn btn-danger" onClick= {delete_todo}>
-                    Delete
+                <span> {label} </span>
+                <button type="button" className="btn" onClick= {delete_todo}>
+                    X
                 </button>
             </div>
         </>
@@ -41,9 +41,8 @@ function ToDoPlusCancel() {
     
     return (
         <>
-            <div className="div row align-items-center fs-4 w-100 ">
-                <div className="col-12">
-                    <div className="row">
+            <div className="div row align-items-center fs-4">
+                    
                         <form 
                         onSubmit={(ev) => {
                             ev.preventDefault();
@@ -57,13 +56,11 @@ function ToDoPlusCancel() {
                                 ]);
                                 setTodoInput("");
                             }
-                        }}
-                        className="w-100" 
+                        }} 
                         >
                             <label htmlFor="toDoInput"></label>
                             <input 
                                 id="toDoInput"
-                                className='text-body-tertiary' 
                                 type="text" 
                                 placeholder="What needs to be done? " 
                                 required 
@@ -95,8 +92,8 @@ function ToDoPlusCancel() {
                             ))}
                             <small>{todos.filter((item) => item.is_done).length} todos left to do</small>
                         </form>
-                    </div>                    
-                </div>     
+                                       
+                    
             </div>
         </>
     );

@@ -17,7 +17,7 @@ const Home = () => {
 				</div>
 				<div className="container-flex ">
 					<div className="row noteBook bg-white flex-column">
-						<div className="col-12 border d-felx flex-column inputStyle">
+						<div className="col-12 border d-felx flex-column">
 							<ToDoPlusCancel />
 						</div>
 						{/* <div className="col-12 footerStyle bg-white border d-flex align-items-center">
