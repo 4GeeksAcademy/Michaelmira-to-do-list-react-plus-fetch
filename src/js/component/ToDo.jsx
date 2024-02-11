@@ -6,7 +6,7 @@ import React, { useState, useEffect } from 'react';
 function TodoItem({label, is_done, delete_todo, toggle_todo}){
 	return (
         <>
-            <div className="todo-item ps-5 bg-white border d-flex justify-content-between">
+            <div className="grayTextOnly ps-5 bg-white border d-flex justify-content-between">
                 {/* <input type="checkbox"checked={is_done} onChange={toggle_todo} /> */}
                 <span> {label} </span>
                 <button type="button" className="btn" onClick= {delete_todo}>
@@ -95,7 +95,7 @@ function ToDoPlusCancel() {
                             ))}
                             {/* <small className='ps-5'>{todos.filter((item) => item.is_done).length} todos left to do</small> */}
                             <div className="div border paper ">
-                                <small className='ps-5'>{todos.length} Item left</small>
+                                <small className='ps-5 grayTextOnly  '>{todos.length} Item left</small>
                             </div>  
                         </form>
 
