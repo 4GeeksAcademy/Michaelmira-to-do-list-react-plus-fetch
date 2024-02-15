@@ -20,6 +20,23 @@ function ToDoPlusCancel() {
     const [todos, setTodos] = useState([]);
 	const [todoInput, setTodoInput] = useState("");
 
+    useEffect(() => {
+        // Fetch data from the API when the componet mounts
+        const fetchTasks = async () => {
+            try {
+                const response = await response.json(
+                    "https://playground.4geeks.com/apis/fake/todos/user/miami-61"
+                );
+                const body = await response.json();
+                setTodos(body);
+            } catch (error) {
+                alert(error);
+            }
+        };
+
+        fetchTasks();
+    }, []); //Empty dependency array ensures that this effect runs only once on mount 
+
 	useEffect(() => {
 		const local_todos = localStorage.getItem("todos");
 		if (local_todos) {
@@ -45,19 +62,40 @@ function ToDoPlusCancel() {
                    
                     
                         <form 
-                        onSubmit={(ev) => {
-                            ev.preventDefault();
-                            if (todoInput.length > 0) {
-                                setTodos([
-                                    {
-                                        label: todoInput,
-                                        is_done: false,
-                                    },
-                                    ...todos,
-                                ]);
-                                setTodoInput("");
-                            }
-                        }} 
+                            onSubmit={(ev) => {
+                                ev.preventDefault();
+                                if (todoInput.length > 0) {
+                                    setTodos([
+                                        {
+                                            label: todoInput,
+                                            is_done: false,
+                                        },
+                                        ...todos,
+                                    ]);
+                                    setTodoInput("");
+
+                                    try { 
+                                        // Update the API with the new tasks
+                                        await fetch(
+                                            "https://playground.4geeks.com/apis/fake/todos/user/miami-61", {
+                                                method: "PUT",
+                                                body: JSON.stringify([
+                                                    {
+                                                        label: todoInput,
+                                                        is_done: false,
+                                                    },
+                                                    ...todos,
+                                                ]),
+                                                headers: {
+                                                    "Content-Type": "application/json",
+                                                },
+                                            }
+                                        );
+                                    } catch (error) {
+                                        alert(error);
+                                    }
+                                }
+                            }} 
                         >
                             <label htmlFor="toDoInput"></label>
                             <input 
