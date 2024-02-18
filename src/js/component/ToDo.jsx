@@ -1,6 +1,7 @@
 // ToDo.jsx
 
 import React, { useState, useEffect } from 'react';
+import FetchAll from './FetchAll';
 
 function TodoItem({label, delete_todo,}){
 	return (
@@ -15,31 +16,7 @@ function TodoItem({label, delete_todo,}){
     )
 }
 
-const apiUrl = "https://playground.4geeks.com/apis/fake/todos/user/michaelmira";
 
-fetch('https://playground.4geeks.com/apis/fake/todos/user/michaelmira', {
-      method: "PUT",
-      body: JSON.stringify(todos),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-    .then(resp => {
-        console.log(resp.ok); // Will be true if the response is successful
-        console.log(resp.status); // The status code=200 or code=400 etc.
-        console.log(resp.text()); // Will try to return the exact result as a string
-        return resp.json(); // (returns promise) Will try to parse the result as JSON and return a promise that you can .then for results
-    })
-    .then(data => {
-        // Here is where your code should start after the fetch finishes
-        console.log(data); // This will print on the console the exact object received from the server
-    })
-    .catch(error => {
-        // Error handling
-        console.log(error);
-    });
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -57,6 +34,7 @@ function ToDoPlusCancel() {
     return (
         <>
             <div className="div align-items-center fs-4 mx-auto shadow">
+                <FetchAll />
         
                    
                     
