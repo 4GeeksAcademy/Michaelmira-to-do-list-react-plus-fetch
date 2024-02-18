@@ -28,6 +28,8 @@ const apiUrl = "https://playground.4geeks.com/apis/fake/todos/user/michaelmira";
 function ToDoPlusCancel() {
     const [todos, setTodos] = useState([]);
 	const [todoInput, setTodoInput] = useState("");
+    const [tasks, setTasks] = useState([]);
+    const [newTask, setNewTask] = useState("");
 
     const inputStyle = {
         border: 'none',  // Remove the border
@@ -37,37 +39,54 @@ function ToDoPlusCancel() {
 
     const handleInputChange = (e) => {
         setTodoInput(e.target.value);
-        handleAddTodo();
+        setNewTask(e.target.value);
     };
 
-    const handleAddTodo = () => {
-        const newTodoObject ={
-            label: todoInput,
-            is_done:false,
+    useEffect(() => {
+        // Fetch data from the API when the component mounts
+        const fetchTasks = async () => {
+            try {
+                const response = await fetch(
+                    "https://playground.4geeks.com/apis/fake/todos/user/michaelmira"
+                );
+                const body = await response.json();
+                setTasks(body);
+            } catch (error) {
+                alert(error);
+            }
         };
 
-        fetch(apiUrl, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(newTodoObject),
-        })
-            .then(response => {
-                console.log(response);
-                if (!response.ok) {
-                    throw new Error(`Failed to add todo. Status: ${response.status}`);
+        fetchTasks();
+    }, []); // Empty dependency array ensures that this effect runs only once on mount
+
+    const addTaskToApi = async () => {
+        // Create a new task object
+        const newTaskObject = {
+            done: false,
+            label: newTask
+        };
+
+        // Update the tasks state
+        const updatedTasks = [...tasks, newTaskObject];
+        setTasks(updatedTasks);
+
+        // Update the API with the new tasks
+        try {
+            await fetch(
+                "https://playground.4geeks.com/apis/fake/todos/user/michaelmira", {
+                    method: "PUT",
+                    body: JSON.stringify(updatedTasks),
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
                 }
-                return response.json();
-            })
-            .then(data => {
-                console.log("New todo added:", data);
-                // You might want to update your state or trigger a fetch to update the todo list
-            })
-            .catch(error => {
-                console.error("Error adding todo:", error.message);
-            });
+            );
+        } catch (error) {
+            alert(error);
+        }
     };
+
+    
     
     return (
         <>
@@ -88,6 +107,7 @@ function ToDoPlusCancel() {
                                     ...todos,
                                 ]);
                                 setTodoInput("");
+                                addTaskToApi()
                             }
                         }} 
                         >
