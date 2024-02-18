@@ -28,8 +28,6 @@ const apiUrl = "https://playground.4geeks.com/apis/fake/todos/user/michaelmira";
 function ToDoPlusCancel() {
     const [todos, setTodos] = useState([]);
 	const [todoInput, setTodoInput] = useState("");
-    const [tasks, setTasks] = useState([]);
-    const [newTask, setNewTask] = useState("");
 
     const inputStyle = {
         border: 'none',  // Remove the border
@@ -39,18 +37,15 @@ function ToDoPlusCancel() {
 
     const handleInputChange = (e) => {
         setTodoInput(e.target.value);
-        setNewTask(e.target.value);
     };
 
     useEffect(() => {
         // Fetch data from the API when the component mounts
         const fetchTasks = async () => {
             try {
-                const response = await fetch(
-                    "https://playground.4geeks.com/apis/fake/todos/user/michaelmira"
-                );
+                const response = await fetch(apiUrl);
                 const body = await response.json();
-                setTasks(body);
+                setTodos(body);
             } catch (error) {
                 alert(error);
             }
@@ -60,27 +55,42 @@ function ToDoPlusCancel() {
     }, []); // Empty dependency array ensures that this effect runs only once on mount
 
     const addTaskToApi = async () => {
-        // Create a new task object
-        const newTaskObject = {
-            done: false,
-            label: newTask
-        };
-
-        // Update the tasks state
-        const updatedTasks = [...tasks, newTaskObject];
-        setTasks(updatedTasks);
-
-        // Update the API with the new tasks
         try {
-            await fetch(
-                "https://playground.4geeks.com/apis/fake/todos/user/michaelmira", {
+            // Create a new task object
+            const newTaskObject = {
+                done: false,
+                label: todoInput
+            };
+
+            // Update the local state
+            setTodos((prevTodos) => [newTaskObject, ...prevTodos]);
+
+            const updatedTasks = [...todos, newTaskObject];
+        setTodos(updatedTasks);
+
+            // Update the API with the new tasks
+            
+            await fetch(apiUrl, {
                     method: "PUT",
                     body: JSON.stringify(updatedTasks),
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                }
-            );
+                });
+            } catch (error) {
+                alert(error);
+            }
+    };
+
+    const deleteTask = async (taskId) => {
+        try {
+            // Update the local state (remove the task with the specified ID)
+            setTodos((prevTodos) => prevTodos.filter(task => task.id !== taskId));
+
+            // Update the API by sending a DELETE request
+            await fetch(`${apiUrl}/${taskId}`, {
+                method: "DELETE",
+            });
         } catch (error) {
             alert(error);
         }
