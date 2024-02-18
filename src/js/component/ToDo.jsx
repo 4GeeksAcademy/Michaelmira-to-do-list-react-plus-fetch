@@ -18,6 +18,10 @@ function TodoItem({label, delete_todo,}){
 
 
 
+const apiUrl = "https://playground.4geeks.com/apis/fake/todos/user/michaelmira";
+
+
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -29,6 +33,40 @@ function ToDoPlusCancel() {
         border: 'none',  // Remove the border
         outline: 'none',  // Remove the default focus outline
         width: "100",
+    };
+
+    const handleInputChange = (e) => {
+        setTodoInput(e.target.value);
+        handleAddTodo();
+    };
+
+    const handleAddTodo = () => {
+        const newTodoObject ={
+            label: todoInput,
+            is_done:false,
+        };
+
+        fetch(apiUrl, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newTodoObject),
+        })
+            .then(response => {
+                console.log(response);
+                if (!response.ok) {
+                    throw new Error(`Failed to add todo. Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("New todo added:", data);
+                // You might want to update your state or trigger a fetch to update the todo list
+            })
+            .catch(error => {
+                console.error("Error adding todo:", error.message);
+            });
     };
     
     return (
@@ -62,7 +100,7 @@ function ToDoPlusCancel() {
                                 required 
                                 style={inputStyle}
                                 value={todoInput}
-                                onChange={ev => setTodoInput(ev.target.value)}
+                                onChange={handleInputChange}
                             >
                             </input>
                             {todos.map((item, idx) => (
@@ -97,5 +135,3 @@ function ToDoPlusCancel() {
 };
 
 export default ToDoPlusCancel
-
-// add input values to the to dos so that everytime you 
