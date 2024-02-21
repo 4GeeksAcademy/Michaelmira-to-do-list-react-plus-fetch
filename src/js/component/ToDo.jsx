@@ -86,15 +86,32 @@ function ToDoPlusCancel() {
     const deleteTaskFromApi = async (taskId) => {
         try { 
             
-            let newTodos = prevTodos.filter(task => task.id !== taskId);
-             await fetch(apiUrl, {
+            let updatedTasks = todos.filter(task => task.id !== taskId);
+            if (updatedTasks.length == 0) { 
+                let response = await fetch(apiUrl, {
+                method: "PUT",
+                body: JSON.stringify([{label:"example Task" , done:false }]),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            if (response.ok) {
+                setTodos(updatedTasks)
+            }
+
+            } else {
+                let response = await fetch(apiUrl, {
                     method: "PUT",
                     body: JSON.stringify(updatedTasks),
                     headers: {
                         'Content-Type': 'application/json',
                     },
                 });
-
+                if (response.ok) {
+                    setTodos(updatedTasks)
+                }
+            }
+            
         } catch (error) {
             console.error("Error deleting todo:", error.message);
         }
