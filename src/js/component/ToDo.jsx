@@ -58,6 +58,7 @@ function ToDoPlusCancel() {
         try {
             // Create a new task object
             const newTaskObject = {
+                id: Date.now(),
                 done: false,
                 label: todoInput
             };
@@ -82,19 +83,23 @@ function ToDoPlusCancel() {
             }
     };
 
-    const deleteTask = async (taskId) => {
-        try {
-            // Update the local state (remove the task with the specified ID)
-            setTodos((prevTodos) => prevTodos.filter(task => task.id !== taskId));
+    const deleteTaskFromApi = async (taskId) => {
+        try { 
+            
+            let newTodos = prevTodos.filter(task => task.id !== taskId);
+             await fetch(apiUrl, {
+                    method: "PUT",
+                    body: JSON.stringify(updatedTasks),
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
 
-            // Update the API by sending a DELETE request
-            await fetch(`${apiUrl}/${taskId}`, {
-                method: "DELETE",
-            });
         } catch (error) {
-            alert(error);
+            console.error("Error deleting todo:", error.message);
         }
     };
+    
 
     
     
@@ -136,6 +141,7 @@ function ToDoPlusCancel() {
                             {todos.map((item, idx) => (
                                 <TodoItem 
                                     key={idx}
+                                    id={item.id}
                                     label={item.label}
                                     is_done={item.is_done}
                                     toggle_todo={() => 
@@ -146,12 +152,13 @@ function ToDoPlusCancel() {
                                             })
                                         )
                                     }
-                                    delete_todo={() => 
-                                        setTodos(
-                                            todos.toSpliced(idx, 1
-                                            )
-                                        )
-                                    }
+                                    delete_todo={() => deleteTaskFromApi(item.id)}
+                                    // delete_todo={() => 
+                                    //     setTodos(
+                                    //         todos.toSpliced(idx, 1
+                                    //         )
+                                    //     )
+                                    // }
                                 />
                             ))}
                             <div className="div border paper ">
