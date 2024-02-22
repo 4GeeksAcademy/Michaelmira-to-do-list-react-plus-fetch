@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import FetchAll from './FetchAll';
+import CleanAll from './CleanAll';
 
 function TodoItem({label, delete_todo,}){
 	return (
@@ -116,6 +117,44 @@ function ToDoPlusCancel() {
             console.error("Error deleting todo:", error.message);
         }
     };
+
+    const cleanAllTasks = async () => {
+        try {
+            let updatedTasks = [];
+
+            if (updatedTasks.length === 0) {
+                let response = await fetch(apiUrl, {
+                    method: "PUT",
+                    body: JSON.stringify([{label: "example Task", done: false}]),
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+               });
+            
+               if (response.ok) {
+                    setTodos(updatedTasks);
+               }
+            } else { 
+                let response = await fetch(apiUrl, {
+                    method:"PUT",
+                    body: JSON.stringify(updatedTasks),
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                });
+
+                if (response.ok) {
+                    setTodos(updatedTasks);
+                }
+            }
+        } catch (error) {
+            console.error("Error cleaning all tasks:", error.message);
+        }
+    };
+
+    
+
+    
     
 
     
@@ -124,65 +163,68 @@ function ToDoPlusCancel() {
         <>
             <div className="div align-items-center fs-4 mx-auto shadow">
                 <FetchAll />
-        
-                   
-                    
-                        <form 
-                        onSubmit={(ev) => {
-                            ev.preventDefault();
-                            if (todoInput.length > 0) {
-                                setTodos([
-                                    {
-                                        label: todoInput,
-                                        is_done: false,
-                                    },
-                                    ...todos,
-                                ]);
-                                setTodoInput("");
-                                addTaskToApi()
+                <form 
+                onSubmit={(ev) => {
+                    ev.preventDefault();
+                    if (todoInput.length > 0) {
+                        setTodos([
+                            {
+                                label: todoInput,
+                                is_done: false,
+                            },
+                            ...todos,
+                        ]);
+                        setTodoInput("");
+                        addTaskToApi()
+                    }
+                }} 
+                >
+                    <label htmlFor="toDoInput"></label>
+                    <input 
+                        className='ms-5 p-1 '
+                        id="toDoInput"
+                        type="text" 
+                        placeholder="What needs to be done? " 
+                        required 
+                        style={inputStyle}
+                        value={todoInput}
+                        onChange={handleInputChange}
+                    >
+                    </input>
+                    {todos.map((item, idx) => (
+                        <TodoItem 
+                            key={idx}
+                            id={item.id}
+                            label={item.label}
+                            is_done={item.is_done}
+                            toggle_todo={() => 
+                                setTodos(
+                                    todos.toSpliced(idx, 1, {
+                                        label: item.label,
+                                        is_done: !item.is_done,
+                                    })
+                                )
                             }
-                        }} 
-                        >
-                            <label htmlFor="toDoInput"></label>
-                            <input 
-                                className='ms-5 p-1 '
-                                id="toDoInput"
-                                type="text" 
-                                placeholder="What needs to be done? " 
-                                required 
-                                style={inputStyle}
-                                value={todoInput}
-                                onChange={handleInputChange}
-                            >
-                            </input>
-                            {todos.map((item, idx) => (
-                                <TodoItem 
-                                    key={idx}
-                                    id={item.id}
-                                    label={item.label}
-                                    is_done={item.is_done}
-                                    toggle_todo={() => 
-                                        setTodos(
-                                            todos.toSpliced(idx, 1, {
-                                                label: item.label,
-                                                is_done: !item.is_done,
-                                            })
-                                        )
-                                    }
-                                    delete_todo={() => deleteTaskFromApi(item.id)}
-                                    // delete_todo={() => 
-                                    //     setTodos(
-                                    //         todos.toSpliced(idx, 1
-                                    //         )
-                                    //     )
-                                    // }
-                                />
-                            ))}
-                            <div className="div border paper ">
-                                <small className='ps-2 grayTextOnly  '>{todos.length} Item left</small>
-                            </div>  
-                        </form>
-
+                            delete_todo={() => deleteTaskFromApi(item.id)}
+                            // delete_todo={() => 
+                            //     setTodos(
+                            //         todos.toSpliced(idx, 1
+                            //         )
+                            //     )
+                            // }
+                        />
+                    ))}
+                    <div className="div border paper ">
+                        <small className='ps-2 grayTextOnly  '>{todos.length} Item left</small>
+                    </div>  
+                </form>
+                <div>
+                    <button onClick={cleanAllTasks} >
+                        <h1>
+                            CleanALLLL
+                        </h1>
+                    </button>
+                </div>
             </div>
         </>
     );

@@ -3,6 +3,7 @@
 import React from "react";
 
 import ToDoPlusCancel from "./ToDo";
+import CleanAll from "./CleanAll";
 
 //create your first component
 const Home = () => {
@@ -22,6 +23,9 @@ const Home = () => {
 						</div> */}
 					</div>
 				</div>
+			</div>
+			<div>
+				{/* <CleanAll /> */}
 			</div>
 		</div>
 	);
