@@ -3,7 +3,6 @@
 import React from "react";
 
 import ToDoPlusCancel from "./ToDo";
-import CleanAll from "./CleanAll";
 
 //create your first component
 const Home = () => {
@@ -18,14 +17,8 @@ const Home = () => {
 						<div className="container-flex mx-auto border d-felx flex-column">
 							<ToDoPlusCancel />
 						</div>
-						{/* <div className="col-12 footerStyle bg-white border d-flex align-items-center">
-							<Footer />
-						</div> */}
 					</div>
 				</div>
-			</div>
-			<div>
-				{/* <CleanAll /> */}
 			</div>
 		</div>
 	);

@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import FetchAll from './FetchAll';
-import CleanAll from './CleanAll';
 
 function TodoItem({label, delete_todo,}){
 	return (
@@ -152,13 +151,6 @@ function ToDoPlusCancel() {
         }
     };
 
-    
-
-    
-    
-
-    
-    
     return (
         <>
             <div className="div align-items-center fs-4 mx-auto shadow">
@@ -219,10 +211,10 @@ function ToDoPlusCancel() {
                     </div>  
                 </form>
                 <div>
-                    <button onClick={cleanAllTasks} >
-                        <h1>
+                    <button className='mt-5' onClick={cleanAllTasks} >
+                        <span>
                             CleanALLLL
-                        </h1>
+                        </span>
                     </button>
                 </div>
             </div>
