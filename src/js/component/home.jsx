@@ -1,7 +1,4 @@
-// home.jsx
-
 import React from "react";
-
 import ToDoPlusCancel from "./ToDo";
 
 //create your first component

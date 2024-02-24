@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-
-
 const FetchAll = () => {
     useEffect(() => {
       const apiUrl = "https://playground.4geeks.com/apis/fake/todos/user/michaelmira";
