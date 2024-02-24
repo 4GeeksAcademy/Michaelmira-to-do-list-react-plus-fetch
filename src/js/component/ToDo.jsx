@@ -16,14 +16,7 @@ function TodoItem({label, delete_todo,}){
     )
 }
 
-
-
 const apiUrl = "https://playground.4geeks.com/apis/fake/todos/user/michaelmira";
-
-
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function ToDoPlusCancel() {
     const [todos, setTodos] = useState([]);
